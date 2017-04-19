@@ -47,7 +47,21 @@ Math.max(...arr)
 
 #### 消息队列、事件循环
 + 消息队列、事件循环用在异步
-https://segmentfault.com/a/1190000004322358
++ js单线程：js引擎里负责解释和执行JavaScript代码的线程只有一个。实际上还存在其他工作线程如：处理AJAX请求的线程、处理DOM事件的线程、定时器线程、读写文件的线程(例如在Node.js中)等等
++ 同步：如果一个函数返回的时候，调用者就能够得到预期结果(即拿到了预期的返回值或者看到了预期的效果)，那么这个函数就是同步的。异步：如果一个函数返回的时候，调用者还不能够得到预期结果，而是需要在将来通过一定的手段得到，那么这个函数就是异步的
++ 所以在JavaScript中对于耗时的操作或者时间不确定的操作，使用异步就成了必然的选择。
++ 异步操作完成后需要通知主线程，这个**通知机制**就是利用消息队列和事件循环。消息队列：一个先进先出的队列，它里面存放着各种消息。事件循环：指主线程重复从消息队列中取消息、执行的过程。
++ 工作线程将消息放到消息队列，主线程通过事件循环过程去取消息。可以简单的认为消息就是响应的回调函数。  
+```js
+while(true){
+	var message = queue.get();
+	excute(message);
+}
+```
+![GitHub](https://github.com/wfbcode/notes/tree/master/assets/img/async.png "GitHub,Social Coding")
+
+
+参考链接：https://segmentfault.com/a/1190000004322358
 
 #### js/css 动画优化方案
 #### 对象和数组深浅拷贝的特殊处理
@@ -55,7 +69,37 @@ https://segmentfault.com/a/1190000004322358
 #### js闭包
 #### js设计模式
 #### babel转码器
+#### 浏览器的缓存机制
+#### mouseenter、mouseover；mouseleave、mouseout的区别
+#### json
+http://www.xingxin.me/posts/58e4914eab572f17b029787f
+#### 单击事件，击穿元素
+#### setTimeout和setInterval
+http://www.cnblogs.com/Chen-XiaoJun/p/6230938.html
+#### js静态属性、方法，原型的属性、方法
+#### 类数组对象
++ 看起来像却又不是数组的对象；
++ 具有数字索引下标和length属性。不具有push、forEach等数组方法。因其原型链__proto__指向不同。
++ 两个典型类数组例子，document.querySelectorAll()返回结果和特殊变量arguments。
++ 类数组对象用数组的方法，通过call、apply（call接受一个参数列表，而apply接受一个包含多个参数的数组或类数组对象）实现。例如：
+```js
+//打印参数
+Array.prototype.forEach.call(arguments, function(arg, idx) {
+    console(idx + '-' + arg)
+});
+//普通对象
+let obj1 = {};
+let obj2 = {};
+Array.prototype.push.call(obj1, 'a', 'b');
+Array.prototype.push.apply(obj2, ['a', 'b']); //obj1、 obj2都是 { 0: "a", 1: "b", length: 2 }
+//将类数组对象转化为数组
+Array.prototype.slice.call(likeArray)
+```
 
+#### 数组的方法  slice/splice
+#### undefined == null true
+#### toString() 类型检测
+#### isNaN()、parseFloat()、isFinite()
 
 ## css
 ## html
