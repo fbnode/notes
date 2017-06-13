@@ -8,6 +8,12 @@ var frames = [
     { title: 'jquery', path: '/frames/JQUERY' },
     { title: 'vue', path: '/frames/VUE' }
 ];
+var notes = [
+    { title: '知识碎点', path: '/study/STUDY' },
+    {title:'es6',path:'/study/ES6'},
+    {title:'js设计模式',path:'/study/PATTERNS'},
+    {title:'webpack',path:'/study/WEBPACK'}
+];
 docute.init({
     // landing: 'landing.html',
     debug: true,
@@ -21,7 +27,8 @@ docute.init({
             path: '/'
         }, {
             title: '技术笔记',
-            path: '/study/STUDY'
+            type: 'dropdown',
+            items: notes
         }, {
             title: '项目分析',
             type: 'dropdown',
@@ -30,10 +37,18 @@ docute.init({
             title: '常用框架',
             type: 'dropdown',
             items: frames
-        }, {
+        },{
+            title:'nodejs',
+            path: '/other/NODEJS'
+        },{
+            title:'数据库',
+            path: '/other/DB'
+        },{
+            title:'面试题系列',
+            path: '/other/INTERVIEW'
+        },{
             title: '闲文杂谈',
-            path: '/cli',
-            source: 'https://raw.githubusercontent.com/egoist/docute/master/CHANGELOG.md'
+            path: '/other/ESSAYS'
         }]
     },
     icons: [{
@@ -43,12 +58,12 @@ docute.init({
         link: 'http://weibo.com/zengxinyu'
     }],
     plugins: [
-        docsearch({
-            apiKey: '65360cf9a91d87cd455d2b286d0d89ee',
-            indexName: 'docute',
-            tags: ['english', 'zh-Hans', 'zh-Hant', 'ja'],
-            url: 'https://docute.js.org'
-        }),
+        // docsearch({
+        //     apiKey: '65360cf9a91d87cd455d2b286d0d89ee',
+        //     indexName: 'docute',
+        //     tags: ['english', 'zh-Hans', 'zh-Hant', 'ja'],
+        //     url: 'https://docute.js.org'
+        // }),
         evanyou()
     ]
 })

@@ -3,7 +3,7 @@
 <p class="tip">
 	最小值同理，针对数据类型都是Number的情况
 </p>
-+ 循环比对   
++ 循环比对  
 ```js
 Array.prototype.max = function() {
     var max = this[0];
@@ -35,7 +35,10 @@ Math.max(...arr)
 </p>
 常用的三种解决方案：
 1. 代理（属于后台范畴）在同域名的web服务器端创建一个代理，代理去调用其他域的资源，然后返回给前端，其效果是相同的。
-2. jsonp(属于jquery，并且只支持 “GET” 请求，但不支持 “POST” 请求)。
+2. JSONP是指JSON Padding，JSONP是一种非官方跨域数据交换协议，由于script的src属性可以跨域请求，所以JSONP利用的就是浏览器的这个“漏洞”，需要通信时，动态的插入一个script标签。
+<p class="tip">
+JSONP只能进行get请求，它的另一个主要缺陷是被不信任的服务使用时会很危险。
+</p>
 ```js
 <script>
 	function jsonp(json){
@@ -44,6 +47,11 @@ Math.max(...arr)
 </script>
 <script src="http://www.bbb.com/index.php"></script>
 ```
+3. CORS，它是一个W3C标准，全称是"跨域资源共享"（Cross-origin resource sharing）。
+CORS需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能，IE浏览器不能低于IE10。整个CORS通信过程，都是浏览器自动完成，不需要用户参与。对于开发者来说，CORS通信与同源的AJAX通信没有差别，代码完全一样。浏览器一旦发现AJAX请求跨源，就会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉。**因此，实现CORS通信的关键是服务器。只要服务器实现了CORS接口，就可以跨源通信。**
+4. HTML5 postMessage
+5. window.name 原理: windoe.name 的值在不同的页面（甚至不同域名）加载后依旧存在，并且可以支持非常长的 name 值（2MB）。
+6. WebSocket 它是一种通信协议，使用ws://（非加密）和wss://（加密）作为协议前缀。该协议不实行同源政策，只要服务器支持，就可以通过它进行跨源通信。
 
 #### 消息队列、事件循环
 + 消息队列、事件循环用在异步
@@ -59,24 +67,9 @@ while(true){
 }
 ```
 ![GitHub](https://github.com/wfbcode/notes/tree/master/assets/img/async.png "GitHub,Social Coding")
-
-
 参考链接：https://segmentfault.com/a/1190000004322358
 
-#### js/css 动画优化方案
-#### 对象和数组深浅拷贝的特殊处理
-#### let var const
-#### js闭包
-#### js设计模式
-#### babel转码器
-#### 浏览器的缓存机制
-#### mouseenter、mouseover；mouseleave、mouseout的区别
-#### json
-http://www.xingxin.me/posts/58e4914eab572f17b029787f
-#### 单击事件，击穿元素
-#### setTimeout和setInterval
-http://www.cnblogs.com/Chen-XiaoJun/p/6230938.html
-#### js静态属性、方法，原型的属性、方法
+
 #### 类数组对象
 + 看起来像却又不是数组的对象；
 + 具有数字索引下标和length属性。不具有push、forEach等数组方法。因其原型链__proto__指向不同。
@@ -96,13 +89,34 @@ Array.prototype.push.apply(obj2, ['a', 'b']); //obj1、 obj2都是 { 0: "a", 1: 
 Array.prototype.slice.call(likeArray)
 ```
 
+#### 对象和数组深浅拷贝的特殊处理
+#### js/css 动画优化方案
+#### let var const
+#### js闭包
+#### js设计模式
+#### babel转码器
+#### 浏览器的缓存机制
+#### mouseenter、mouseover；mouseleave、mouseout的区别
+#### json
+http://www.xingxin.me/posts/58e4914eab572f17b029787f
+#### 单击事件，击穿元素
+#### setTimeout和setInterval
+http://www.cnblogs.com/Chen-XiaoJun/p/6230938.html
+#### js静态属性、方法，原型的属性、方法
+
+
 #### 数组的方法  slice/splice
 #### undefined == null true
 #### toString() 类型检测
 #### isNaN()、parseFloat()、isFinite()
+#### 内存泄漏
 
 ## css
+#### 水平居中、垂直居中
+https://juejin.im/post/58f818bbb123db006233ab2a?utm_source=gold_browser_extension
+#### img图片下间隙问题
+
 ## html
-## markdown 语法
-http://xianbai.me/learn-md/article/extension/code-blocks-and-highlighting.html  
+http://xianbai.me/learn-md/article/exte
+## markdown 语法nsion/code-blocks-and-highlighting.html  
 https://github.com/younghz/Markdown

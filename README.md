@@ -1,6 +1,6 @@
 # 前端小学生一枚，坐标杭州。
 
-study and work notes
+work and study notes
 
 脚踏实地，每天成长一点点……
 
